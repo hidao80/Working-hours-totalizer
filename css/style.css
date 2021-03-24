@@ -1,0 +1,36 @@
+html, body {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+h1 {
+    font-size: xx-large;
+}
+textarea {
+    width: 100%;
+    height: 20rem;
+}
+table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+} 
+table th {
+    font-weight: 600;
+}
+table td {
+    padding: 6px 13px;
+    border: 1px solid #dfe2e5;
+}
+table th {
+    padding: 6px 13px;
+    border: 1px solid #dfe2e5;
+    text-align: center;
+}
+table tr {
+    background-color: #fff;
+    border-top: 1px solid #c6cbd1;
+}
+table tr:nth-child(2n) {
+    background-color: #f6f8fa;
+}
