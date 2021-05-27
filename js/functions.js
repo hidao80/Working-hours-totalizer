@@ -89,3 +89,29 @@ function drawResult() {
     $("#sum").textContent = "実働計： " + (Math.floor(sum / 60) + Math.round(sum % 60 / 15) / 4) + " h";
     $("#total").textContent = "総計： " + (Math.floor(total / 60) + Math.round(total % 60 / 15) / 4) + " h";
 }
+
+/**
+ * 入力された文字列を読み込んで結果を Markdown のテーブル形式でクリップボードにコピーする
+ */
+ function copyResult() {
+    const data = parse($("#input").value);
+    
+    let sum = 0, total = 0;
+    let html = 
+`業務名 | 業務内容 | 作業時間[時] | 作業時間[分]
+--- | --- | --: | --:
+`;
+
+    Object.keys(data).sort().forEach(category => {
+        html += `${category} | ${data[category].detail} | ${data[category].round} | ${data[category].time}\n`;
+        if (category.indexOf("　") != 0) sum += data[category].time;
+        total += data[category].time;
+    });
+
+    html += "\n実働計： " + (Math.floor(sum / 60) + Math.round(sum % 60 / 15) / 4) + " h  ";
+    html += "\n総計： " + (Math.floor(total / 60) + Math.round(total % 60 / 15) / 4) + " h";
+
+    if(navigator.clipboard){
+        navigator.clipboard.writeText(html);
+    }
+}
