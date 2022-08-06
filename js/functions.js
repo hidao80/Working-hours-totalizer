@@ -80,7 +80,7 @@ function drawResult() {
     <td style="text-align:right">${data[category].round}</td>
     <td style="text-align:right">${data[category].time}</td>
 </tr>`;
-        if (category.indexOf("　") != 0) sum += data[category].time;
+        if (category.indexOf("#") != 0) sum += data[category].time;
         total += data[category].time;
     });
 
@@ -104,7 +104,7 @@ function drawResult() {
 
     Object.keys(data).sort().forEach(category => {
         html += `${category} | ${data[category].detail} | ${data[category].round} | ${data[category].time}\n`;
-        if (category.indexOf("　") != 0) sum += data[category].time;
+        if (category.indexOf("#") != 0) sum += data[category].time;
         total += data[category].time;
     });
 
